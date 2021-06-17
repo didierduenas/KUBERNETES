@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: didi-wordpress-pod
+  creationTimestamp: null
+  labels: 
+  run: wordpress
+name: wordpress
+spec:
+  containers:
+      - image: wordpressimage
+        name: wordpress
+        ports:
+          - containerPort: 80
+            protocol: "TCP"
+        env:
+          - name: WORDPRESS_DB_HOST
+            value: "db"
+            name: WORDPRESS_DB_USER
+            value: "exampleuser"
+            name: WORDPRESS_DB_PASSWORD
+            value: "examplepass"
+            name: WORKPRESS_DB_NAME
+            value: "exampledb"
+        resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  status: {}
